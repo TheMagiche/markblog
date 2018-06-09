@@ -1,0 +1,91 @@
+<!DOCTYPE html> {% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+
+    <!-- medium style editor  -->
+
+    <!-- Core -->
+    <link rel="stylesheet" href="{% static 'css/medium-editor.css' %}">
+    <!-- or any other theme -->
+    <link rel="stylesheet" href="{% static 'css/themes/default.css' %}">
+
+
+    <!-- custom css  -->
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <!-- google fonts  -->
+
+    <title>Blog</title>
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark techfont custom-navbar">
+        <div class="container">
+            <ul class="navbar-nav navbar-left">
+                <li class="nav-item navbar-brand bigbrand ">
+                    <a class="nav-link" href="{% url 'post_list' %}">Mark's Blog</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://github.com">Github</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://linkedIn.com">LinkedIn</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_draft_list' %}">Drafts</a>
+                </li>
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Welcome: {{ user.username }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        Login
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    {% comment %} content block {% endcomment %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog_post">
+                    {% block content %} {% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/medium-editor.js' %}"></script>
+    <script>
+        var editor = new MediumEditor('.editable');
+    </script>
+</body>
+
+</html>

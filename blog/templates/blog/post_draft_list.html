@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <h1>Drafts List Page</h1>
+  {% for post in posts %}
+    {% if post.thumbnail %}
+    <img src="../../media/{{post.thumbnail}}" width="600px" alt="myimg">
+    {% else %}
+    <img class="card-img-top" src="../../static/img/Girl_29.jpg" width="60%" alt="Card image cap">
+    {% endif %}
+    <div class="post">
+        <p class="date">created: {{ post.created_date|date:"d-m-Y" }}</p>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+        <p>{{post.text|truncatechars:200}}</p>
+    </div>
+  {% endfor %}
+{% endblock content %}

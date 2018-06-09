@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %} {% block content %}
+<div class="centerstage">
+    <div class="row">
+        <div class="col-md-3">
+            {% for post in post_list %}
+            <div class="post">
+                <!-- <h1>
+                    <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+                </h1>
+                <div class="date">
+                    <p>Published on: {{ post.published_date|date:"d-m-Y" }}</p>
+                </div>
+                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a> -->
+                <div class="col-lg-6" style="margin-bottom: 1em;">
+                    <div class="card" style="width: 18rem;">
+                        {% if post.thumbnail %}
+                        <img src="../../media/{{post.thumbnail}}" width="100%" alt="myimg">
+                        {% else %}
+                        <img class="card-img-top" src="../../static/img/Girl_29.jpg" alt="Card image cap">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+                            </h5>
+                            <p class="card-text">
+                                <div class="date">
+                                    <p>Published on: {{ post.published_date|date:"d-m-Y" }}</p>
+                                </div>
+                            </p>
+                            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
