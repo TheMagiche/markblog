@@ -20,9 +20,9 @@
     <!-- custom css  -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
-    <!-- google fonts  -->
-
-    <title>Blog</title>
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>TheMagiche</title>
 
 </head>
 
@@ -32,37 +32,39 @@
         <div class="container">
             <ul class="navbar-nav navbar-left">
                 <li class="nav-item navbar-brand bigbrand ">
-                    <a class="nav-link" href="{% url 'post_list' %}">Mark's Blog</a>
+                    <a class="nav-link" href="{% url 'post_list' %}">Mark's Rants<i class="fa"></i>
+                    </a>
                 </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://github.com">Github</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://linkedIn.com">LinkedIn</a>
+                    <a class="nav-link" href="{% url 'about' %}">About Me
+                        <i class="fa fa-user-tie"></i>
+                    </a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
+                    <a class="nav-link" href="{% url 'post_new' %}">New Rants <i class="fa fa-file-alt"></i>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'post_draft_list' %}">Drafts</a>
+                    <a class="nav-link" href="{% url 'post_draft_list' %}">Drafts
+                         <i class="fa fa-edit"></i>
+                        </a>
                 </li>
                 <a class="nav-link" href="{% url 'logout' %}">Log out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Welcome: {{ user.username }}</a>
+                    <a class="nav-link">Welcome: {{ user.username }}
+                        <i class="fa fa-hand-spock"></i>
+                    </a> 
                 </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">
                         Login
-                        <span class="glyphicon glyphicon-user"></span>
+                        <i class="fa fa-hand-peace"></i>
                     </a>
                 </li>
                 {% endif %}
@@ -74,7 +76,7 @@
     {% comment %} content block {% endcomment %}
     <div class="content container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-12">
                 <div class="blog_post">
                     {% block content %} {% endblock content %}
                 </div>

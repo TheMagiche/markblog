@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'blog/about.html'
 
 class PostListView(ListView):
     model = Post
@@ -63,7 +63,7 @@ class DraftListView(LoginRequiredMixin,ListView):
 ########################
 ########################
 
-@login_required
+
 def add_comment_to_post(request,pk):
     post  = get_object_or_404(Post,pk=pk)
 
